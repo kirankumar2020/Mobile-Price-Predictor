@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Price Prediction</title>
+    <style>
+        body {
+            background-image: url("static/images/photo.jpg"); /* Set the background image */
+            background-size: cover; /* Cover the entire viewport */
+            color: #333; /* Set text color */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            height: 210vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Set background color of container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            text-align: center; /* Center text within container */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Align items to the start of the container */
+            width: 100%; /* Set form width to 100% */
+        }
+
+        /* Style for predicted price class */
+        .predicted-price {
+            color: #2ecc71; /* Set the color to green */
+            font-weight: bold; /* Make the text bold */
+            font-size: 1.2em; /* Increase the font size */
+        }
+
+        label {
+            margin-bottom: 5px; /* Add some bottom margin to label elements */
+            color: #af1818; /* Set label text color */
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-bottom: 10px; /* Add some bottom margin to input elements */
+        }
+
+        button {
+            background-color: #2ecc71; /* Set button background color */
+            color: white; /* Set button text color */
+            padding: 10px 20px; /* Add padding to button */
+            border: none; /* Remove button border */
+            border-radius: 5px; /* Add border radius to button */
+            cursor: pointer; /* Add cursor pointer to button */
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        button:hover {
+            background-color: #27ae60; /* Change button background color on hover */
+        }
+        .container h1 {
+            color: #FF0000; /* Set the color of the title to red */
+        }
+        .container h2 {
+            color: #FF0000; /* Set the color of the title to red */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Used Mobile Price Predictor</h1>
+        </div>
+        <form action="{{ url_for('predicted_price_class') }}" method="post">
+            <!-- Input fields for various features -->
+            <label for="battery_power">Battery Power:</label>
+            <input type="text" name="battery_power" id="battery_power" required>
+
+            <label for="blue">Blue:</label>
+            <input type="text" id="blue" name="blue" required>
+
+
+            <label for="clock_speed">Clock Speed:</label>
+            <input type="text" id="clock_speed" name="clock_speed" required>
+
+            <label for="dual_sim">Dual SIM:</label>
+            <input type="text" id="dual_sim" name="dual_sim" required>
+
+            <label for="fc">FC:</label>
+            <input type="text" id="fc" name="fc" required>
+
+            <label for="four_g">4G:</label>
+            <input type="text" id="four_g" name="four_g" required>
+
+            <label for="int_memory">Internal Memory:</label>
+            <input type="text" id="int_memory" name="int_memory" required>
+
+            <label for="m_dep">M_Dep:</label>
+            <input type="text" id="m_dep" name="m_dep" required>
+
+            <label for="mobile_wt">Mobile Weight:</label>
+            <input type="text" id="mobile_wt" name="mobile_wt" required>
+
+            <label for="n_cores">Number of Cores:</label>
+            <input type="text" id="n_cores" name="n_cores" required>
+
+            <label for="pc">PC:</label>
+            <input type="text" id="pc" name="pc" required>
+
+            <label for="px_height">Pixel Height:</label>
+            <input type="text" id="px_height" name="px_height" required>
+
+            <label for="px_width">Pixel Width:</label>
+            <input type="text" id="px_width" name="px_width" required>
+
+            <label for="ram">RAM:</label>
+            <input type="text" id="ram" name="ram" required>
+
+            <label for="sc_h">Screen Height:</label>
+            <input type="text" id="sc_h" name="sc_h" required>
+
+            <label for="sc_w">Screen Width:</label>
+            <input type="text" id="sc_w" name="sc_w" required>
+
+            <label for="talk_time">Talk Time:</label>
+            <input type="text" id="talk_time" name="talk_time" required>
+
+            <label for="three_g">3G:</label>
+            <input type="text" id="three_g" name="three_g" required>
+
+            <label for="touch_screen">Touch Screen:</label>
+            <input type="text" id="touch_screen" name="touch_screen" required>
+
+            <label for="wifi">WiFi:</label>
+            <input type="text" id="wifi" name="wifi" required>
+
+            <!-- Add more input fields for other features -->
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+    {% if prediction %}
+        <h2>Mobile Price :{{ prediction }}</h2>
+        <!-- <h2 style="color:rgb(65, 13, 163);">Predicted Price Class</h2>
+        <h2 style="background-color:powderblue;">Predicted Price Class</h2> -->
+        <!-- <p>{{ prediction }}</p> -->
+
+    {% endif %}
+</body>
+</html>
