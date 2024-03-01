@@ -3,6 +3,7 @@ import numpy as np
 import pickle
 import json
 from utils import get_predicted_price_class
+from config import PORT_NUMBER
 
 app = Flask(__name__)
 
@@ -56,4 +57,4 @@ def predicted_price_class():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0",port=PORT_NUMBER,debug=False)
